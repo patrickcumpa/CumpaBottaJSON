@@ -13,6 +13,7 @@ public class CompetizioneRobotica {
         // TODO code application logic here
         System.out.println("prova");
         System.out.println("prova 2");
+        System.out.println("prova 3");
     }
     
 }
