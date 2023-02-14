@@ -1,0 +1,79 @@
+[
+    {
+        "paziente": {
+            "nome": "Mario",
+            "cognome": "Rossi",
+            "codice_fiscale": "RSSMRA83T23F205K",
+            "sesso": "M",
+            "eta": 40
+        },
+        "prelievo": {
+            "data": "2023-02-12",
+            "ora": "10:30:00",
+            "luogo": "Centro territoriale"
+        },
+        "esami": [
+            {
+                "analisi": {
+                    "data": "2023-02-12",
+                    "ora": "11:30:00",
+                    "codice_operatore": "123456789",
+                    "matricola_strumenti": [1, 2, 3],
+                    "denominazione": "emoglobina",
+                    "risultato": {
+                        "valore_numerico": 12.5,
+                        "unita_misura": "ml",
+                        "valore_minimo": 70,
+                        "valore_massimo": 15
+                    }
+                }
+            },
+            {
+                "analisi": {
+                    "data": "2023-02-12",
+                    "ora": "12:00:00",
+                    "codice_operatore": "987654321",
+                    "matricola_strumenti": [],
+                    "denominazione": "glicemia",
+                    "risultato": {
+                        "valore_numerico": 95,
+                        "unita_misura": "ml",
+                        "valore_minimo": 70,
+                        "valore_massimo": 100
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "paziente": {
+            "nome": "Luisa",
+            "cognome": "Bianchi",
+            "codice_fiscale": "BNCLSU82C64L219M",
+            "sesso": "F",
+            "eta": 35
+        },
+        "prelievo": {
+            "data": "2023-02-12",
+            "ora": "14:00:00",
+            "luogo": "Reparto ospedaliero"
+        },
+        "esami": [
+            {
+                "analisi": {
+                    "data": "2023-02-12",
+                    "ora": "14:30:00",
+                    "codice_operatore": "111111111",
+                    "matricola_strumenti": [4, 5],
+                    "denominazione": "emoglobina",
+                    "risultato": {
+                        "valore_numerico": 13.2,
+                        "unita_misura": "g",
+                        "valore_minimo": 11,
+                        "valore_massimo": 15
+                    }
+                }
+            }
+        ]
+    }
+]
