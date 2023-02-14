@@ -68,6 +68,14 @@ public class CompetizioneRobotica {
                         gara.getTempo()));
             }
         }
+        
+        for (PunteggioSquadra squadra : punteggi) {
+            System.out.println("-----------------------------------------");
+            System.out.println("Nome: " + squadra.getNome());
+            System.out.println("Punteggio: " + squadra.getPunteggio());
+            System.out.println("Tempo: " + squadra.getTempo());
+            System.out.println("-----------------------------------------");
+        }
     }
     
 }
