@@ -1,8 +1,6 @@
 package competizionerobotica;
 
 import java.io.File;
-import java.io.FilenameFilter;
-
 /**
  *
  * @author patrick.cumpa
