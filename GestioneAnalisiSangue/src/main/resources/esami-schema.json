@@ -1,0 +1,119 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "paziente": {
+                "type": "object",
+                "properties": {
+                    "nome": { 
+                        "type": "string" 
+                    },
+                    "cognome": { 
+                        "type": "string" 
+                    },
+                    "codice_fiscale": { 
+                        "type": "string",
+                        "minLength": 16,
+                        "maxLength": 16
+                    },
+                    "sesso": { 
+                        "type": "string",
+                        "enum": ["M", "F"]
+                    },
+                    "eta": { 
+                        "type": "integer" 
+                    }
+                },
+                "required": ["nome", "cognome", "codice_fiscale", "sesso", "eta"],
+                "additionalProperties": false
+            },
+            "prelievo": {
+                "type": "object",
+                "properties": {
+                    "data": { 
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "ora": {
+                        "type": "string",
+                        "format": "time"
+                    },
+                    "luogo": {
+                        "type": "string",
+                        "enum": [
+                            "Centro territoriale",
+                            "Reparto ospedaliero",
+                            "Domicilio del paziente",
+                            "Pronto soccorso",
+                            "Ambulanza"
+                        ]
+                    }
+                },
+                "required": ["data", "ora", "luogo"],
+                "additionalProperties": false
+            },
+            "esami": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "analisi": {
+                            "type": "object",
+                            "properties": {
+                                "data": { 
+                                    "type": "string",
+                                    "format": "date"
+                                },
+                                "ora": {
+                                    "type": "string",
+                                    "format": "time"
+                                },
+                                "codice_operatore": {
+                                    "type": "string",
+                                    "pattern": "^[0-9]{9}$"
+                                },
+                                "matricola_strumenti": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "integer",
+                                        "minimum": 1
+                                    },
+                                    "minItems": 0,
+                                    "maxItems": 5
+                                },
+                                "denominazione": {
+                                    "type": "string"
+                                },
+                                "risultato": {
+                                    "type": "object",
+                                    "properties": {
+                                        "valore_numerico": {
+                                            "type": "number"
+                                        },
+                                        "unita_misura": {
+                                            "type": "string"
+                                        },
+                                        "valore_minimo": {
+                                            "type": "number"
+                                        },
+                                        "valore_massimo": {
+                                            "type": "number"
+                                        }
+                                    },
+                                    "required": ["valore_numerico", "unita_misura", "valore_minimo", "valore_massimo"],
+                                    "additionalProperties": false
+                                }
+                            },
+                            "required": ["data", "ora", "codice_operatore", "matricola_strumenti", "denominazione", "risultato"],
+                            "additionalProperties": false
+                        }
+                    }
+                }
+            }
+        },
+        "required": ["paziente", "prelievo", "esami"],
+        "additionalProperties": false
+    }
+}
