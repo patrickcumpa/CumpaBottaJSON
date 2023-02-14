@@ -1,10 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package competizionerobotica;
-
-import java.time.LocalTime;
 
 /**
  *
@@ -13,19 +7,23 @@ import java.time.LocalTime;
 public class Gara {
 
    private String campo;
-   private String robot;
+   private String giudice;
    private String squadra;
-   private LocalTime ora;
-   private int punteggio_percorso;
-   private int punteggio_difficoltà;
+   private String ora;
+   private int punteggioPercorso;
+   private int punteggioDifficolta;
+   private int tempo;
 
-    public Gara(String campo, String robot, String squadra, LocalTime ora, int punteggio_percorso, int punteggio_difficoltà) {
+    public Gara(String campo, String robot, String squadra, 
+            String ora, int punteggio_percorso, int punteggio_difficoltà, 
+            int tempo) {
         this.campo = campo;
-        this.robot = robot;
+        this.giudice = robot;
         this.squadra = squadra;
         this.ora = ora;
-        this.punteggio_percorso = punteggio_percorso;
-        this.punteggio_difficoltà = punteggio_difficoltà;
+        this.punteggioPercorso = punteggio_percorso;
+        this.punteggioDifficolta = punteggio_difficoltà;
+        this.tempo = tempo;
     }
 
     public String getCampo() {
@@ -36,12 +34,12 @@ public class Gara {
         this.campo = campo;
     }
 
-    public String getRobot() {
-        return robot;
+    public String getGiudice() {
+        return giudice;
     }
 
-    public void setRobot(String robot) {
-        this.robot = robot;
+    public void setGiudice(String giudice) {
+        this.giudice = giudice;
     }
 
     public String getSquadra() {
@@ -52,29 +50,45 @@ public class Gara {
         this.squadra = squadra;
     }
 
-    public LocalTime getOra() {
+    public String getOra() {
         return ora;
     }
 
-    public void setOra(LocalTime ora) {
+    public void setOra(String ora) {
         this.ora = ora;
     }
 
-    public int getPunteggio_percorso() {
-        return punteggio_percorso;
+    public int getPunteggioPercorso() {
+        return punteggioPercorso;
     }
 
-    public void setPunteggio_percorso(int punteggio_percorso) {
-        this.punteggio_percorso = punteggio_percorso;
+    public void setPunteggioPercorso(int punteggioPercorso) {
+        this.punteggioPercorso = punteggioPercorso;
     }
 
-    public int getPunteggio_difficoltà() {
-        return punteggio_difficoltà;
+    public int getPunteggioDifficolta() {
+        return punteggioDifficolta;
     }
 
-    public void setPunteggio_difficoltà(int punteggio_difficoltà) {
-        this.punteggio_difficoltà = punteggio_difficoltà;
+    public void setPunteggioDifficolta(int punteggioDifficolta) {
+        this.punteggioDifficolta = punteggioDifficolta;
     }
- 
+    
+    public int getTempo() {
+        return tempo;
+    }
+    
+    public void setTempo(int tempo) {
+        this.tempo = tempo;
+    }
+    
+    @Override
+    public String toString() {
+        return "Gara{" + "campo=" + campo + ", giudice=" + giudice + 
+                ", squadra=" + squadra + ", ora=" + ora + 
+                ", punteggioPercorso=" + punteggioPercorso + 
+                ", punteggioDifficolta=" + punteggioDifficolta + 
+                ", tempo=" + tempo + '}';
+    }
     
 }
