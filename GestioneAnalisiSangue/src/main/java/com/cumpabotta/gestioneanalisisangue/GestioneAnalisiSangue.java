@@ -19,6 +19,8 @@ public class GestioneAnalisiSangue {
     private static final Path ESITI_JSON = RESOURCES_DIR.resolve("esiti.json");
     private static final Path ESAMI_SCHEMA = RESOURCES_DIR.resolve("esami-schema.json");
     private static final Path ESITI_SCHEMA = RESOURCES_DIR.resolve("esiti-schema.json");
+    
+    private static Esiti[] esiti;
 
     public static void main(String[] args) throws ParseException {
         
@@ -28,6 +30,7 @@ public class GestioneAnalisiSangue {
             System.out.print("Esiti: ");
             JSONValidate.validate(ESITI_JSON.toString(), ESITI_SCHEMA.toString());
             
+            esiti = Esiti.parseEsiti(ESITI_JSON);
             EsamiPaziente[] esamiPaziente = EsamiPaziente.parseEsamiPaziente(ESAMI_JSON);
             
             for (EsamiPaziente paziente : esamiPaziente) {
