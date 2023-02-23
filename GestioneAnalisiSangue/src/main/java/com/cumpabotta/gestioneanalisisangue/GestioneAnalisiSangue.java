@@ -27,6 +27,22 @@ public class GestioneAnalisiSangue {
             JSONValidate.validate(ESAMI_JSON.toString(), ESAMI_SCHEMA.toString());
             System.out.print("Esiti: ");
             JSONValidate.validate(ESITI_JSON.toString(), ESITI_SCHEMA.toString());
+            
+            EsamiPaziente[] esamiPaziente = EsamiPaziente.parseEsamiPaziente(ESAMI_JSON);
+            
+            for (EsamiPaziente paziente : esamiPaziente) {
+                String nome = paziente.getPaziente().getNome();
+                String cognome = paziente.getPaziente().getCognome();
+                String dataPrelievo = paziente.getPrelievo().getData() + " " + paziente.getPrelievo().getOra();
+                System.out.println("------------------------------------------------------------------------");
+                System.out.println("Paziente: " + nome + " " + cognome);
+                System.out.println("Prelievo: " + dataPrelievo + " - " + paziente.getPrelievo().getLuogo());
+                for (Analisi analisi : paziente.getAnalisi()) {
+                    String dataEsito = analisi.getData() + " " + analisi.getOra();
+                    System.out.println("Analisi:  " + dataEsito + " - " + analisi.getDenominazione());
+                }
+                System.out.println("------------------------------------------------------------------------");
+            }
         } catch (IOException | ProcessingException e) {
             System.err.println("Errore durante la validazione del file json: " + e.getMessage());
         }
