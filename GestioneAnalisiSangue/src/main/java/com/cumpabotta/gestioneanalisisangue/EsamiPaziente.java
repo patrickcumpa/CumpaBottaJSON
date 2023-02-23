@@ -1,5 +1,9 @@
 package com.cumpabotta.gestioneanalisisangue;
 
+import com.google.gson.Gson;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 
 /**
@@ -41,5 +45,10 @@ public class EsamiPaziente {
 
     public void setAnalisi(List<Analisi> analisi) {
         this.analisi = analisi;
+    }
+    
+    public static EsamiPaziente[] parseEsamiPaziente(Path filepath) throws IOException {
+        String datiEsami = new String(Files.readAllBytes(filepath));
+        return new Gson().fromJson(datiEsami, EsamiPaziente[].class);
     }
 }
