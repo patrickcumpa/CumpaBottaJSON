@@ -1,0 +1,26 @@
+[
+    {
+        "nome": "emoglobina",
+        "periodoValido": 7,
+        "strumenti": [
+            {
+                "matricolaStrumenti": [1, 2, 3],
+                "operatoriAbilitati": ["123456789", "987654321"]
+            },
+            {
+                "matricolaStrumenti": [4, 5],
+                "operatoriAbilitati": ["111111111"]
+            }
+        ]
+    },
+    {
+        "nome": "glicemia",
+        "periodoValido": 3,
+        "strumenti": [
+            {
+                "matricolaStrumenti": [6],
+                "operatoriAbilitati": ["222222222"]
+            }
+        ]
+    }
+]

@@ -1,0 +1,44 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "nome": {
+                "type": "string"
+            },
+            "periodoValido": {
+                "type": "integer",
+                "minimum": 0
+            },
+            "strumenti": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "matricolaStrumenti": {
+                            "type": "array",
+                            "items": {
+                                "type": "integer",
+                                "minimum": 1
+                            },
+                            "minItems": 0,
+                            "maxItems": 5
+                        },
+                        "operatoriAbilitati": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "pattern": "^[0-9]{9}$"
+                            }
+                        }
+                    }, 
+                    "required": ["matricolaStrumenti", "operatoriAbilitati"],
+                    "additionalProperties": false
+                }
+            }
+        },
+        "required": ["nome", "periodoValido", "strumenti"],
+        "additionalProperties": false
+    }
+}
