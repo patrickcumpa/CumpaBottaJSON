@@ -60,6 +60,18 @@ public class Esiti {
         return diff <= periodoValido;
     }
     
+    public boolean isOperatoreAbilitato(String codiceOperatore, List<Integer> matricola) {
+        for (Strumento str : this.getStrumenti()) {
+            if (!str.getOperatoriAbilitati().contains(codiceOperatore)) {
+                continue;
+            }
+            if (matricola.containsAll(str.getMatricolaStrumenti())) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public static Esiti[] parseEsiti(Path filepath) throws IOException {
         String datiEsiti = new String(Files.readAllBytes(filepath));
         return new Gson().fromJson(datiEsiti, Esiti[].class);
