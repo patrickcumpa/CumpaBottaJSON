@@ -4,13 +4,19 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  *
  * @author TommasoBotta
  */
 public class Esiti {
+    
+    private static final SimpleDateFormat FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     private String nome;
     private int periodoValido;
@@ -44,6 +50,14 @@ public class Esiti {
 
     public void setStrumenti(List<Strumento> strumenti) {
         this.strumenti = strumenti;
+    }
+    
+    public boolean isPeriodoValido(String dataPrelievo, String dataEsito) throws ParseException {
+        Date prelievo = FORMAT.parse(dataPrelievo);
+        Date esito = FORMAT.parse(dataEsito);
+        long diffInMillies = Math.abs(prelievo.getTime() - esito.getTime());
+        long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+        return diff <= periodoValido;
     }
     
     public static Esiti[] parseEsiti(Path filepath) throws IOException {
