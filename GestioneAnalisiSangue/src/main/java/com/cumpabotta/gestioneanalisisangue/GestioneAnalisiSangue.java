@@ -43,11 +43,33 @@ public class GestioneAnalisiSangue {
                 for (Analisi analisi : paziente.getAnalisi()) {
                     String dataEsito = analisi.getData() + " " + analisi.getOra();
                     System.out.println("Analisi:  " + dataEsito + " - " + analisi.getDenominazione());
+                    validateRisultato(analisi, dataPrelievo, dataEsito);
                 }
                 System.out.println("------------------------------------------------------------------------");
-            }
+            }     
         } catch (IOException | ProcessingException e) {
             System.err.println("Errore durante la validazione del file json: " + e.getMessage());
         }
     }
+    
+    public static void validateRisultato(Analisi analisi, String dataPrelievo, String dataEsito) throws IOException, 
+                                                                                                        ParseException {
+        for (Esiti esito : esiti) {
+            if (!analisi.getDenominazione().equals(esito.getNome())) {
+                continue;
+            }
+            if (esito.isOperatoreAbilitato(analisi.getCodiceOperatore(), 
+                                           analisi.getMatricolaStrumenti())) {
+                System.out.println("\t  Operatore abilitato");
+            } else {
+                System.out.println("\t  Operatore non abilitato");
+            }
+            if (esito.isPeriodoValido(dataPrelievo, dataEsito)) {
+                System.out.println("\t  Risultato valido");
+            } else {
+                System.out.println("\t  Risultato non valido");
+            }
+        }
+    }
+    
 }
